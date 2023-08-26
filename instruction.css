@@ -26,7 +26,8 @@ html {
     margin-top: 20px;
     margin-bottom: 20px;
 
-    width:60%;
+    min-width: 500px;
+    max-width: 750px;
 }
 
 .outer-box a {
@@ -76,11 +77,8 @@ html {
     overflow-x: auto;
 }
 
-.img-scrap {
+.img-logo {
     display: block;
-
-    max-width: 50%;
-    max-height: 50%;
 
     max-width: 500px;
     max-height: 250px;
