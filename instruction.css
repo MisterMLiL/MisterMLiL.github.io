@@ -1,0 +1,116 @@
+body {
+    background: #0000004b url(images/rust-background.jpg);
+    background-attachment: fixed;
+    backdrop-filter: blur(7px);
+	background-repeat: repeat-x;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.outer-box {
+    display: block;
+    background-color: #fff5d773;
+    
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    width:60%;
+}
+
+.outer-box a {
+    color: #dd7513;
+
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:medium;
+
+    text-decoration: none;
+}
+
+.content-li {
+    display: block;
+    background-color: #ffbb0020;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding: 1px;
+
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.content-li a {
+    color: #000000;
+
+    font-family: 'Courier New', monospace;
+    font-size: medium;
+
+    text-decoration: none;
+}
+
+.code-box {
+    display: block;
+    background-color: #ffbb0020;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-family: 'Courier New', monospace;
+
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.img-scrap {
+    display: block;
+
+    max-width: 50%;
+    max-height: 50%;
+
+    max-width: 500px;
+    max-height: 250px;
+    
+    margin: 0 auto;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.default-text {
+    text-align: left;
+
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.description-text {
+    text-align: left;
+
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-style: italic;
+}
+
+.command {
+    font-weight: bold;
+}
+
+.description {
+    color: rgba(0, 0, 0, 0.5);
+}
