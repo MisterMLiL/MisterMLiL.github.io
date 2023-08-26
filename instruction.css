@@ -26,7 +26,6 @@ html {
     margin-top: 20px;
     margin-bottom: 20px;
 
-    min-width: 500px;
     max-width: 750px;
 }
 
@@ -80,10 +79,10 @@ html {
 .img-logo {
     display: block;
 
-    max-width: 500px;
-    max-height: 250px;
+    width: 500px;
+    max-height: auto;
     
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .italic-text {
