@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки графики Rust</title>
+    <link rel="stylesheet" href="../css/instruction.css">
+    <link rel="icon" href="../images/rust-icon.svg" type="image/svg">
+</head>
+
+<body>
+    
+    <!-- Лого Rust -->
+
+    <div class="img-logo">
+        <img src="../images/rust-logo-name.png">
+    </div>
+
+
+
+    <!-- Тема статьи -->
+
+    <div class="outer-box">        
+        <h2>Конфигурации настроек графики для разных ПК</h2>
+
+        <p class="description-text">
+            Составитель: MLiL, Почти демон, Лазуренко Евгений и иные формы его личности
+        </p>
+    </div>
+
+
+
+    <!-- Содержание статьи -->
+
+    <div class="outer-box">
+        <h2>Содержание:</h2>
+
+        <div class="content-li">
+            <ul>
+                <li><a href="#section-1">1 Настройки Rust</a>
+                    <ul>
+                        <li><a href="#section-1-1">1.1 Image Effects — эффекты изображения</a></li>
+                        <li><a href="#section-1-2">1.2 Graphics Quality — настройки графики в Rust</a></li>
+                        <li><a href="#section-1-3">1.3 Mesh quality – качество сетки</a></li>
+                        <li><a href="#section-1-4">1.4 Physics — физика в игре</a></li>
+                        <li><a href="#section-1-5">1.5 Experimental — экспериментальное</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section-2">2 Рекомендованные настройки графики</a>
+                    <ul>
+                        <li><a href="#section-2-1">2.1 Настройки графики для слабых компьютеров Rust</a></li>
+                        <li><a href="#section-2-2">2.2 Настройки графики для средних компьютеров Rust</a></li>
+                        <li><a href="#section-2-3">2.3 Настройки графики для мощных компьютеров Rust</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+   </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Первая глава -->
+
+        <h1 id="section-1">1 Настройки Rust</h1>
+
+        <!-- Первая глава, секция 1 -->
+
+        <h2 id="section-1-1">1.1 Image Effects — эффекты изображения</h2>
+
+        <div class="term-definition-text-block">
+            <span class="term">Anti–Aliasing</span>
+            <span class="definition ">- сглаживание.</span>
+            <br><span class="definition"> Имеет 4 вариации настройки:</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">• OFF</span>
+            <span class="definition ">- полностью отключает сглаживание;</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">• FXAA</span>
+            <span class="definition ">- метод сглаживания от NVidia, представляющий собой однопроходный пиксельный шейдер, который обсчитывает результирующий кадр на этапе постобработки;</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">• SMAA</span>
+            <span class="definition ">- (Subpixel Morphological anti-aliasing) — смесь FXAA и MLAA. По сути, несколько улучшенный MLAA, но работающий на видеокарте. Дает картинку лучше, чем FXAA, однако потребляет больше ресурсов;</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">• TSSAA (Temporal Super Sampling Anti-Aliasing)</span>
+            <span class="definition ">- в отличии от других типов сглаживания, которые работают только с одним, он умеет работать с движущимися объектами и хорошо убирает «мельтешение» картинки. По сути, является смесью MSAA и SMAA, дает очень качественную картинку, однако немного ее мылит и очень требовательно к ресурсам.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Depth of field</span>
+            <span class="definition ">- глубина резкости. Она относится к эффекту размытия вещей на заднем плане. Точно так же, как и размытие в движении, этот параметр отвлекает наши глаза и создает качество, как в фильмах – это не всегда отлично смотрится. К тому же эта настройка может повлиять на производительность. Её нужно настраивать, отталкиваясь от личных предпочтений.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Ambient Occlusion</span>
+            <span class="definition ">- фоновое затенение. Технология Ambient Occlusion позволяет формировать тени на основе одного или большего источников теней. В простейшей форме AO формирует контрастную тень от неяркого источника света. Чем ярче будет источник света, тем мягче будет переход между тенью и остальной частью сцены.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">High quality bloom</span>
+            <span class="definition ">- освещение высокого качества. Это графическая настройка, которая относится к эффекту естественного света, качающихся/движущихся деревьев, растений, цветов и т.д.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Lens dirt</span>
+            <span class="definition ">- грязь объектива. Это эффект, разработанный, чтобы сделать Rust более реалистичным с точки зрения первого лица, сделав его так, как будто воображаемая камера, которая является глазами игрока, имела грязь на них. Это заставляет воображаемую камеру выглядеть немного запотевшей и пыльной, а в качестве побочного эффекта может заставить все выглядеть ярким, даже ночью.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Motion blur</span>
+            <span class="definition ">- размытость. Добавляет размытие изображения при повороте камеры, воспроизведении сцен движения или быстро движущихся объектов.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Sun shafts</span>
+            <span class="definition ">- вал солнца. Это такой эффект, который виден, когда пар или туман просвечивается лучами, пробивающимися, например, через листву. Короче, когда между игроком и источником света есть какое-то дырявое препятствие, а в воздухе висят какие-то мелкие частицы.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Sharpen</span>
+            <span class="definition ">- резкость. Делает объекты более чёткими.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Vignetting</span>
+            <span class="definition ">- затемнение. Снижает яркость изображения к краям поля зрения системы.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Примечание</span>
+            <span class="definition ">- Данные эффекты не сильно повлияют на производительность.</span>
+        </div>
+
+        <br>
+
+        <!-- Первая глава, секция 2 -->
+
+        <h2 id="section-1-2">1.2 Graphics Quality — настройки графики в Rust</h2>
+
+        <div class="term-definition-text-block">
+            <span class="term">Graphics Quality</span>
+            <span class="definition">– общее качество графики. Имеет 6 видов настройки (От 0 до 5). Устанавливайте в соответствии с остальными настройками.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Shadow quality</span>
+            <span class="definition">– качество теней. Имеет 3 вида настройки (От 0 до 2).</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Shadow cascades</span>
+            <span class="definition">– каскады теней. Имеет 3 вида настройки (0 каскадов – 2 каскада – 4 каскада). Ухудшает качество теней, повышая производительность.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Max Shadow lights</span>
+            <span class="definition">– данный параметр отвечает за проход света между стенами. Имеет 4 варианта настройки (От 0 до 3).</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Water quality</span>
+            <span class="definition">– общее качество воды. Имеет 3 варианта настройки (От 0 до 2). При значении 1 и выше на воде появляются эффекты.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Water reflections</span>
+            <span class="definition">– отражения на воде. Имеет 3 вида настройки (От 0 до 2). Добавляет отражения на воде при значении выше 1.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Shader level</span>
+            <span class="definition">– уровень шейдеров. Имеет настройку от 100 до 600. Чем больше показатель, тем больше деталей на земле.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Draw distance</span>
+            <span class="definition">– дальность прорисовки. Данный параметр отвечает за прорисовку всех объектов.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Shadow distance</span>
+            <span class="definition">– дальность теней. Данный параметр влияет на дальность прорисовки теней.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Anisotropic filtering</span>
+            <span class="definition">– анизотропная фильтрация. Правильно отображает объекты под большим углом.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Parallax mapping</span>
+            <span class="definition">– параллактическое отображение. Делает изображение более объёмным. Имеет настройку от 0 до 2.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Grass displacement</span>
+            <span class="definition">– смещение травы (приминается под вами или нет). Данный параметр имеет 2 варианта настройки – ON и OFF. Включенный параметр мнёт траву под вами.</span>
+        </div>
+
+        <br>
+
+        <!-- Первая глава, секция 3 -->
+
+        <h2 id="section-1-3">1.3 Mesh quality – качество сетки</h2>
+        
+        <div class="term-definition-text-block">
+            <span class="term">Particle quality</span>
+            <span class="definition">– качество частиц. Данный параметр делает частицы более качественными. Легче всего заметить на костре ночью. Имеет настройку от 0 до 100.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Object quality</span>
+            <span class="definition">– качество объектов. В основном отвечает за прорисовку зданий. Имеет настройку от 0 до 200.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Tree quality</span>
+            <span class="definition">– качество деревьев. Отвечает за качество прорисовки деревьев. Настраивается от 0 до 200.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Max tree meshes</span>
+            <span class="definition">– максимальное количество сеток деревьев. Данный параметр ограничивает количество древовидных сеток для визуализации, независимо от того, сколько объектов на самом деле вокруг вас. Имеет настройку от 0 до 100.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Terrain quality</span>
+            <span class="definition">– качество местности. Данный параметр отвечает за качество местности. Имеет настройку от 0 до 100.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Grass quality</span>
+            <span class="definition">– качество травы. Отвечает за качество прорисовываемой травы. Имеет настройку от 0 до 100.</span>
+        </div>
+        <div class="term-definition-text-block">
+            <span class="term">Décor quality</span>
+            <span class="definition">– качество декораций. Отвечает за общее качество декораций в игре. Имеет настройку от 0 до 100.</span>
+        </div>
+
+        <br>
+
+        <!-- Первая глава, секция 4 -->
+
+        <h2 id="section-1-4">1.4 Physics — физика в игре</h2>
+        
+        <div class="term-definition-text-block">
+            <span class="term">Max gibs</span>
+            <span class="definition">– максимальное количество разрушаемых объектов. Отвечает за то, сколько объектов появится от разрушения постройки. Имеет настройку от 0 до 2000.</span>
+        </div>
+        
+        <br>
+
+        <h2 id="section-1-1">1.5 Experimental — экспериментальное</h2>
+    </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Вторая глава -->
+
+        <h1 id="section-2">2 Рекомендованные настройки графики</h1>
+
+        <p class="default-text">
+            Здесь представлены несколько вариантов настроек для игры Rust, в зависимости от мощности вашего компьютера.
+        </p>
+
+        <p class="default-text">
+            Учтите, что данные параметры не идеальны и применимы не ко всем конфигураций ПК, однако в большинстве случаев это такой «универсальный вариант».
+        </p>
+
+        <br>
+
+        <!-- Вторая глава, секция 1 -->
+
+        <h2 id="section-2-1">2.1 Настройки графики для слабых компьютеров Rust</h2>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_5-1024x452.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Image Effects для слабых компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_10-1024x581.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Graphics Quality для слабых компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_11-1024x365.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Mesh Quality для слабых компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_12-1024x360.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Phisics & Experemental для слабых компьютеров</center>
+        </p>
+
+        <br>
+
+        <!-- Вторая глава, секция 2 -->
+
+        <h2 id="section-2-2">2.2 Настройки графики для средних компьютеров Rust</h2>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_13-1024x448.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Image Effects для средних компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_14-1024x580.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Graphics Quality для средних компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_15-1024x359.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Mesh Quality для средних компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_16-1024x354.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Phisics & Experemental для средних компьютеров</center>
+        </p>
+
+        <br>
+
+        <!-- Вторая глава, секция 3 -->
+
+        <h2 id="section-2-3">2.3 Настройки графики для мощных компьютеров Rust</h2>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_19-1024x446.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Image Effects для мощных компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_20-1024x580.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Graphics Quality для мощных компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_21-1024x368.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Mesh Quality для мощных компьютеров</center>
+        </p>
+
+        <br>
+
+        <div class="img-box">
+            <img src="https://rustcraft.ru/wp-content/uploads/2019/04/Screenshot_22-1024x355.png">
+        </div>
+
+        <p class="description-text" >
+            <center>Phisics & Experemental для мощных компьютеров</center>
+        </p>
+
+        <br>
+    </div>
+</body>
+
+</html>

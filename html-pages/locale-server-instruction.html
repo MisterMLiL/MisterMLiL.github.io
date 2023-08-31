@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Локальный сервер Rust</title>
+    <link rel="stylesheet" href="../css/instruction.css">
+    <link rel="icon" href="../images/rust-icon.svg" type="image/svg">
+</head>
+
+<body>
+
+    <!-- Лого Rust -->
+
+    <div class="img-logo">
+        <img src="../images/rust-logo-name.png">
+    </div>
+
+
+
+    <!-- Тема статьи -->
+
+    <div class="outer-box">        
+        <h2>Инструкция по установке и настройке локального сервера Rust</h2>
+
+        <p class="description-text">
+            Составитель: MLiL, Почти демон, Лазуренко Евгений и иные формы его личности
+        </p>
+    </div>
+
+
+
+    <!-- Содержание статьи -->
+
+    <div class="outer-box">
+        <h2>Содержание:</h2>
+
+        <div class="content-li">
+        <ul>
+            <li><a href="#section-1">1 Сервер</a>
+                <ul>
+                    <li><a href="#section-1-1">1.1 Установка сервера</a></li>
+                    <li><a href="#section-1-2">1.2 Настройка и запуск</a></li>
+                    <li><a href="#section-1-3">1.3 Подключение к серверу</a></li>
+                </ul>
+            </li>
+            <li><a href="#section-2">2 Oxide</a>
+                <ul>
+                    <li><a href="#section-2-1">2.1 Установка Oxide</a></li>
+                    <li><a href="#section-2-2">2.2 Установка плагинов</a></li>
+                </ul>
+            </li>
+            <li><a href="#section-3">3 Команды для сервера</a>
+                <ul>
+                    <li><a href="#section-3-1">3.1 Команды локального сервера</a></li>
+                    <li><a href="#section-3-2">3.2 Команды oxide</a>
+                        <ul>
+                            <li><a href="#section-3-2-1">3.2.1 Группы</a></li>
+                            <li><a href="#section-3-2-2">3.2.2 Разрешения</a></li>
+                            <li><a href="#section-3-2-3">3.2.3 Плагины</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#section-4">4 Команды которые необходимо вводить</a>
+                <ul>
+                    <li><a href="#section-4-1">4.1 Команды сервера</a></li>
+                    <li><a href="#section-4-2">4.2 Команды Oxide</a>
+                        <ul>
+                            <li><a href="#section-4-2-1">4.2.1 Плагин Skins</a></li>
+                            <li><a href="#section-4-2-2">4.2.2 Плагин RemoverTool</a></li>
+                            <li><a href="#section-4-2-3">4.2.3 Плагин TimeOfDay</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+   </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Первая глава -->
+
+        <h1 id="section-1">1 Сервер</h1>
+
+        <!-- Первая глава, секция 1 -->
+
+        <h2 id="section-1-1">1.1 Установка сервера</h2>
+
+        <p class="default-text">
+            Скачать архив по ссылке:
+            <a href="https://drive.google.com/file/d/1_GVCYB6OpIy4Cff4bCHzhR3v-b4p4uhj/view?usp=sharing" target="_blank">Архив</a>
+        </p>
+
+        <p class="default-text">
+            Разархивировать папку Rust_Server в любую папку на диске (желательно SSD диск), на которой будет находиться сервер.
+        </p>
+
+        <p class="default-text">
+            В папке Rust_Server запустить файл .Update.bat, он запустит обновление/установки сервера на диск, он будет занимать 6-8 гигов.
+        </p>
+
+        <p class="default-text">
+            Сервер установлен, теперь в папке Rust_Server будет находиться сервер Rust
+        </p>
+
+        <br>
+
+        <!-- Первая глава, секция 2 -->
+
+        <h2 id="section-1-2">1.2 Настройка сервера</h2>
+
+        <p class="default-text">
+            Откройте папку Rust_Server. В папке .server находиться файл .Start.bat.
+            <br>
+            <br>Скопируйте туда следующий текст
+        </p>
+
+        <code class="code-box">
+@echo off
+cls
+:srat
+echo Server starting...
+
+RustDedicated.exe -batchmode ^
++server.hostname "Local Server" ^
++server.identity "LocalServer" ^
++server.port 28015 ^
++server.maxplayers 1 ^
++server.seed 1111 ^
++server.worldsize 3000 ^
+-logFile "output.txt" ^
++rcon.port 28016
++rcon.password "654465" ^
+goto start
+        </code>
+
+        <br>
+
+        <div>
+            <span class="command">server.hostname</span>
+            <span class="description">- название сервера отображаемого при заходе на него</span>
+        </div>
+        <div>
+            <span class="command">server.identity</span>
+            <span class="description">- идентификатор сервера</span>
+        </div>
+        <div>
+            <span class="command">server.port</span>
+            <span class="description">- порт сервера (не менять)</span>
+        </div>
+        <div>
+            <span class="command">server.maxplayers</span>
+            <span class="description">- максимальное количество игроков (можно ставить 1)</span>
+        </div>
+        <div>
+            <span class="command">server.seed</span>
+            <span class="description">- сид генерации карты сервера</span>
+        </div>
+        <div>
+            <span class="command">server.worldsize</span>
+            <span class="description">- размер карты сервера (по стандарту 4000)</span>
+        </div>
+
+        <br>
+        <hr>
+
+        <p class="default-text">
+            По стандарту будет создана карта "Procedural Map". Для того чтобы изменить карту на другую добавьте следующую строку в файл перед -logFile:
+        </p>
+
+        <code class="code-box">
++server.level map_name
+        </code>
+
+        <br>
+
+        <div>
+            <span class="command">server.level</span>
+            <span class="description">- название карты которая будет генерироваться на сервере</span>
+        </div>
+
+        <br>
+        <hr>
+
+        <p class="description-text">
+            Запускать сервер нужно с файла .Start.bat.
+        </p>
+
+        <br>
+
+        <!-- Первая глава, секция 3 -->
+
+        <h2 id="section-1-3">1.3 Подключение к серверу</h2>
+
+        <p class="default-text">
+            Чтобы подключиться к локальному серверу, заходим в Rust.
+            <br>Открываем консоль на кнопку F1.
+            <br>
+            <br>Вводим команду:
+        </p>
+
+        <code class="code-box">
+client.connect 127.0.0.1:28015
+        </code>
+
+        <br>
+
+        <p class="description-text">
+            Далее должен начаться процесс подключения к локальному серверу.
+        </p>
+    </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Вторая глава -->
+
+        <h1 id="section-2">2 Oxide</h1>
+
+        <p class="default-text">
+            Oxide — это модификация для игры Rust, которая предлагает широкие возможности для серверного моддинга.
+        </p>
+
+        <p class="default-text">
+            С помощью Oxide вы можете установить и настроить различные плагины, добавляющие новые функции и улучшения в игру.
+        </p>
+
+        <!-- Вторая глава, секция 1 -->
+
+        <h2 id="section-2-1">2.1 Установка Oxide</h2>
+
+        <p class="default-text"> 
+            Скачать архив по ссылке:
+            <a href="https://umod.org/games/rust/download?tag=public" target="_blank">Архив</a>
+        </p>
+
+        <p class="default-text"> 
+            Разархивируем в папку Rust_Server/.server.
+            <br>Запускаем сервер с файла .Start.bat
+            <br>
+            <br>После запуска сервера вводим следующую команду прямо в консоль:
+        </p>
+
+        <code class="code-box">
+oxide.version
+        </code>
+
+        <br>
+
+        <p class="description-text">
+            Если выдается логическая информация, а не ошибка, то все установлено корректно.
+        </p>
+
+        <br>
+
+        <!-- Вторая глава, секция 2 -->
+
+        <h2 id="section-2-2">2.2 Установка плагинов</h2>
+
+        <p class="default-text">
+            Плагины можно найти на сайте uMod:
+            <a href="https://umod.org/plugins?page=1&sort=title&sortdir=asc&categories=rust" target="_blank">Перейти</a>
+        </p>
+
+        <p class="default-text">
+            После скачивания плагина файл необходимо скинуть в папку Rust_Server/.server/oxide/plugins
+        </p>
+
+        <p class="description-text">
+            Если плагин не начал работать на сервере и в консоль ничего не написалось - перезапустить сервер.
+        </p>
+    </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Третья глава -->
+
+        <h1 id="section-3">3 Команды для сервера</h1>
+
+        <!-- Третья глава, секция 1 -->
+
+        <h2 id="section-3-1">3.1 Команды локального сервера</h2>
+
+        <div>
+            <span class="command">restart &lt;секунды&gt;</span>
+            <span class="description">- перезапуск сервера</span>
+        </div>
+        <div>
+            <span class="command">env.time &lt;значение&gt;</span>
+            <span class="description">- установить внутриигровое время</span>
+        </div>
+        <div>
+            <span class="command">ownerid &lt;steam id&gt;</span>
+            <span class="description">- удалить администратора</span>
+        </div>
+        <div>
+            <span class="command">noclip</span>
+            <span class="description">- полет</span>
+        </div>
+        <div>
+            <span class="command">god</span>
+            <span class="description">- режим бессмертия</span>
+        </div>
+
+        <br>
+
+        <!-- Третья глава, секция 2 -->
+
+        <h2 id="section-3-2">3.2 Команды oxide</h2>
+
+        <!-- Третья глава, секция 2, подпункт 1 -->
+
+        <h2 id="section-3-2-1">3.2.1 Группы</h2>
+
+        <div>
+            <span class="command">oxide.version</span>
+            <span class="description">- узнать версия oxide и проверить работает ли он</span>
+        </div>
+        <div>
+            <span class="command">oxide.show groups</span>
+            <span class="description">- посмотреть созданные группы</span>
+        </div>
+        <div>
+            <span class="command">oxide.show group &lt;название&gt;</span>
+            <span class="description">- посмотреть игроков в группе</span>
+        </div>
+        <div>
+            <span class="command">oxide.group add &lt;название&gt;</span>
+            <span class="description">- создать новую группу с &lt;названием&gt;</span>
+        </div>
+        <div>
+            <span class="command">oxide.group remove &lt;название&gt;</span>
+            <span class="description">- удалить группу с &lt;названием&gt;</span>
+        </div>
+        <div>
+            <span class="command">oxide.usergroup add &lt;ник|id&gt; &lt;название&gt;</span>
+            <span class="description">- добавить игрока в группу</span>
+        </div>
+        <div>
+            <span class="command">oxide.usergroup remove &lt;ник|id&gt; &lt;название&gt;</span>
+            <span class="description">- удалить игрока из группы</span>
+        </div>
+
+        <br>
+
+        <!-- Третья глава, секция 2, подпункт 2 -->
+
+        <h2 id="section-3-2-2">3.2.2 Разрешения <permission></h2>
+
+        <div>
+            <span class="command">oxide.grant group &lt;название&gt; permission</span>
+            <span class="description">- добавить permission группе &lt;название&gt;</span>
+        </div>
+        <div>
+            <span class="command">oxide.revoke group &lt;название&gt; permission</span>
+            <span class="description">- удалить permission у группы</span>
+        </div>
+        <div>
+            <span class="command">oxide.grant user &lt;ник|id&gt; permission</span>
+            <span class="description">- дать permission игроку</span>
+        </div>
+        <div>
+            <span class="command">oxide.revoke user &lt;ник|id&gt; permission</span>
+            <span class="description">- удалить permission у игрока</span>
+        </div>
+        <div>
+            <span class="command">oxide.show perms</span>
+            <span class="description">- список permission</span>
+        </div>
+        <div>
+            <span class="command">oxide.show user &lt;ник|id&gt;</span>
+            <span class="description">- посмотреть список permission у игрока</span>
+        </div>
+
+        <br>
+
+        <!-- Третья глава, секция 2, подпункт 3 -->
+
+        <h2 id="section-3-2-3">3.2.3 Плагины</h2>
+
+        <div>
+            <span class="command">oxide.load &lt;название&gt;</span> <span class="description">- загрузить плагин</span>
+        </div>
+        <div>
+            <span class="command">oxide.unload &lt;название&gt;</span> <span class="description">- выгрузить плагин</span>
+        </div>
+        <div>
+            <span class="command">oxide.reload &lt;название&gt;</span> <span class="description">- перезагрузить плагин</span>
+        </div>
+
+        <br>
+    </div>
+
+
+
+
+
+    <div class="outer-box">
+
+        <!-- Четвертая глава -->
+
+        <h1 id="section-4">4 Команды которые необходимо вводить</h1>
+
+        <p class="description-text">
+            Описание всех команд смотреть в пункте 3
+        </p>
+
+        <!-- Четвертая глава, секция 1 -->
+
+        <h2 id="section-4-1">4.1 Команды сервера</h2>
+
+        <!-- Четвертая глава, секция 2 -->
+
+        <h2 id="section-4-2">4.2 Команды Oxide</h2>
+        
+        <p class="default-text">
+            Данные команды необходимо ввести в консоль одна за одной.
+        </p>
+
+        <p class="default-text">
+            Данные команды создают группу players, и добавляют туда игрока с steamid
+            <a href="https://steamcommunity.com/profiles/76561198871926612"> 76561198871926612</a> (вставить свой SteamId).
+        </p>
+
+        <code class="code-box">
+oxide.group add players
+oxide.usergroup add 76561198871926612 players
+        </code>
+
+        <br>
+        
+        <!-- Четвертая глава, секция 2, подпункт 1 -->
+
+        <h2 id="section-4-2-1">4.2.1 Плагин Skins</h2>
+        
+        <p class="default-text">
+            <a href="https://umod.org/plugins/skins">Ссылка</a>
+            на плагин на сайте
+            <a href="https://umod.org/">UMod</a>
+        </p>
+
+        <p class="default-text">
+            Данная команда добавлять группе players permission на использование команды skins.use.
+        </p>
+        
+        <p class="default-text">
+            Данная команда позволяет игрокам в группе players выбирать скины из списка.
+        </p>
+
+        <code class="code-box">
+oxide.grant group players skins.use
+        </code>
+
+        <br>
+        
+        <p class="default-text">
+            Файл 
+            <a href="#" id="downloadLink-skins-json">Skins.json</a>
+            необходимо закинуть в папку Rust_Server/.server/oxide/config
+        </p>
+
+        <br>
+
+        <!-- Четвертая глава, секция 2, подпункт 2 -->
+
+        <h2 id="section-4-2-2">4.2.2 Плагин RemoverTool</h2>
+        
+        <p class="default-text">
+            <a href="https://umod.org/plugins/remover-tool">Ссылка</a>
+            на плагин на сайте
+            <a href="https://umod.org/">UMod</a>
+        </p>
+
+        <p class="default-text">
+            Данная команда добавлять группе players permission на использование команды removertool.normal.
+        </p>
+        
+        <p class="default-text">
+            Данная команда позволяет игрокам в группе players пользоваться RemoverTool для удаления объектов или построек.
+        </p>
+
+        <code class="code-box">
+oxide.grant group players removertool.normal
+        </code>
+
+        <br>
+
+        <p class="default-text">
+            Данная команда добавлять группе players permission на использование команды removertool.admin.
+        </p>
+        
+        <p class="default-text">
+            Данная команда позволяет игрокам в группе players пользоваться админским RemoverTool для удаления объектов или построек.
+
+            <br>В этом режиме можно удалить любой объект.
+        </p>
+
+        <code class="code-box">
+oxide.grant group players removertool.admin
+        </code>
+
+        <br>
+
+        <!-- Четвертая глава, секция 2, подпункт 3 -->
+
+        <h2 id="section-4-2-3">4.2.3 Плагин TimeOfDay</h2>
+        
+        <p class="default-text">
+            <a href="https://umod.org/plugins/time-of-day">Ссылка</a>
+            на плагин на сайте
+            <a href="https://umod.org/">UMod</a>
+        </p>
+
+        <p class="default-text">
+            Данная команда позволяет сделать длину ночи равную 3.
+        </p>
+
+        <code class="code-box">
+tod.nightlength 3
+        </code>
+
+        <br>
+
+        <p class="default-text">
+            Данная команда позволяет сделать длину дня равным 40
+        </p>
+
+        <code class="code-box">
+tod.daylength 40
+        </code>
+
+        <br>
+    </div>
+
+
+
+
+    
+    <script src="../js/downloadSkins.json.js"></script>
+    
+</body>
+
+</html>
